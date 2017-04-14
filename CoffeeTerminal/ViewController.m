@@ -16,6 +16,8 @@
 #import "LSVipLate.h"
 #import "LSTerminalInterface.h"
 
+#import <JHChainableAnimations/JHChainableAnimations.h>
+
 @interface ViewController ()
 
 @property (strong) id<LSTerminalInterface> terminal;
@@ -168,19 +170,24 @@
 - (void)updateLevelViewState:(CGFloat)duration {
     self.totalLabel.text = [@(self.terminal.currentOrder.deposit) toDollar];
     UIColor *nextColor = nil;
+    UILabel *usedLabel = nil;
     CGRect rect = self.levelView.frame;
     if (self.terminal.currentOrder.deposit <= chocolatePrice) {
+        usedLabel = self.chocolateLabel;
         rect = [self rectForLabel:self.chocolateLabel price:chocolatePrice];
         nextColor = [UIColor yellowColor];
     } else if (self.terminal.currentOrder.deposit <= capuchinoPrice) {
+        usedLabel = self.capuchinoLabel;
         rect = [self rectForLabel:self.capuchinoLabel price:capuchinoPrice];
         nextColor = [UIColor greenColor];
         self.terminal.currentOrder.currentCoffee = [LSChocolate defaultCoffee];
     } else if (self.terminal.currentOrder.deposit <= latePrice) {
+        usedLabel = self.lateLabel;
         rect = [self rectForLabel:self.lateLabel price:latePrice];
         nextColor = [UIColor brownColor];
         self.terminal.currentOrder.currentCoffee = [LSCapuchino defaultCoffee];
     } else if (self.terminal.currentOrder.deposit <= vipLatePrice) {
+        usedLabel = self.vipLateLabel;
         rect = [self rectForLabel:self.vipLateLabel price:vipLatePrice];
         nextColor = [UIColor redColor];
         self.terminal.currentOrder.currentCoffee = [LSLate defaultCoffee];
@@ -189,10 +196,15 @@
         nextColor = [UIColor redColor];
         self.terminal.currentOrder.currentCoffee = [LSVipLate defaultCoffee];
     }
+    if (usedLabel) {
+        JHChainableAnimator *labelAnimator = [[JHChainableAnimator alloc] initWithView:usedLabel].rotate(360);
+        labelAnimator.animate(duration);
+    }
     [UIView animateWithDuration:duration animations:^{
         self.levelView.frame = rect;
-        self.levelView.backgroundColor = nextColor;
     }];
+    JHChainableAnimator *animator = [[JHChainableAnimator alloc] initWithView:self.levelView].makeBackground(nextColor);
+    animator.animate(duration);
 }
 
 - (void)updateViewState:(CGFloat)duration {

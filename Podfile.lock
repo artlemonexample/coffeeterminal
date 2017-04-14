@@ -1,0 +1,12 @@
+PODS:
+  - JHChainableAnimations (2.0.2)
+
+DEPENDENCIES:
+  - JHChainableAnimations (~> 2.0)
+
+SPEC CHECKSUMS:
+  JHChainableAnimations: b6fe3fae7e728d71eaa9491bc6f77c30ee121fc4
+
+PODFILE CHECKSUM: dcd2f0b81d7b4613caa62ccfed538869df9a0b82
+
+COCOAPODS: 1.0.0
