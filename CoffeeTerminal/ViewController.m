@@ -132,6 +132,7 @@
     [self updateViewState:1.0];
     // TODO: implement algorith of change
     // [self.terminal.currentOrder clean];
+    [self allertMessege];
 }
 
 - (IBAction)putQuarterDollar:(id)sender {
@@ -235,5 +236,30 @@
     rect.origin.y = self.startOriginY + self.startHeight - rect.size.height;
     return rect;
 }
+
+-(void) alertMessageWithTitle:(NSString*)title message:(NSString*)message butonTitle:(NSString*)buttonTitle{
+    
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:title
+                                message:message
+                                preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction
+                                  actionWithTitle:buttonTitle
+                                  style:UIAlertActionStyleCancel
+                                  handler:^(UIAlertAction * _Nonnull action) {
+                                      [self.navigationController popToRootViewControllerAnimated:YES];
+                                  }];
+    [alert addAction:alertAction];
+    
+    [self presentViewController:alert
+                       animated:YES completion:^{
+                           nil;
+                       }];
+}
+
+-(void)allertMessege {
+    [self alertMessageWithTitle:@"good choice" message:@"Bon appetit" butonTitle:@"Thanks ! :)"];
+}
+
 
 @end
