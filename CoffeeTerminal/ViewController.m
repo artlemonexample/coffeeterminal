@@ -58,6 +58,7 @@
     self.startOriginY = self.levelView.frame.origin.y;
     self.levelView.backgroundColor = [UIColor blueColor];
     [self updateViewState:0.0];
+//    self.view.layer.contents = (id)[UIImage imageNamed:@"background.jpg"].CGImage;
 }
 
 - (void)addSoldCoffee {
@@ -109,19 +110,23 @@
     switch (button.tag) {
         case 1: {
             coffee = [LSChocolate defaultCoffee];
+            [self allertMessege];
             
         } break;
         case 2: {
             coffee = [LSCapuchino defaultCoffee];
-            
+            [self allertMessege];
+
         } break;
         case 3: {
             coffee = [LSLate defaultCoffee];
-            
+            [self allertMessege];
+
         } break;
         case 4: {
             coffee = [LSVipLate defaultCoffee];
-            
+            [self allertMessege];
+
         } break;
             
         default:
@@ -132,7 +137,6 @@
     [self updateViewState:1.0];
     // TODO: implement algorith of change
     // [self.terminal.currentOrder clean];
-    [self allertMessege];
 }
 
 - (IBAction)putQuarterDollar:(id)sender {
@@ -150,12 +154,12 @@
     [self increase:1.0];
 }
 
-- (IBAction)purTwoDollar:(id)sender {
+- (IBAction)putTwoDollar:(id)sender {
     [self.terminal incrementTwoDollars];
     [self increase:2.0];
 }
 
-- (IBAction)purFiveDollar:(id)sender {
+- (IBAction)putFiveDollar:(id)sender {
     [self.terminal incrementFiveDollars];
     [self increase:5.0];
 }
