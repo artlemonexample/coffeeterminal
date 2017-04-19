@@ -271,7 +271,7 @@
                     <connections>
                         <outlet property="capuchinoLabel" destination="v0K-7a-c75" id="yd3-A4-6xv"/>
                         <outlet property="chocolateLabel" destination="bNA-gu-6k4" id="qUM-YV-BoW"/>
-                        <outlet property="fiveDollarsCountLabel" destination="ok9-lg-Kw1" id="Lex-5j-390"/>
+                        <outlet property="fiveDollarsCountLabel" destination="ok9-lg-Kw1" id="Yoj-lH-vDt"/>
                         <outlet property="halfDollarsCountLabel" destination="WX2-rI-iHE" id="zdN-vu-5CZ"/>
                         <outlet property="lateLabel" destination="eW9-bY-jvB" id="xat-kh-dH2"/>
                         <outlet property="levelView" destination="ksO-Au-5b8" id="G5q-7q-KmS"/>
